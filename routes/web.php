@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\DiggingDeeperController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestTestController;
 Route::get('/', function () {
@@ -17,6 +17,14 @@ Route::group($groupData, function () {
     Route::resource('categories', CategoryController::class)
         ->only($methods)
         ->names('blog.admin.categories');
+});
+
+Route::group(['prefix' => 'digging_deeper'], function () {
+
+    Route::get('collections', [DiggingDeeperController::class, 'collections'])
+
+        ->name('digging_deeper.collections');
+
 });
 
 //BlogPost
