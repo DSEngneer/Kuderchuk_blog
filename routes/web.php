@@ -19,6 +19,11 @@ Route::group($groupData, function () {
         ->names('blog.admin.categories');
 });
 
+//BlogPost
+Route::resource('posts', PostController::class)
+    ->except(['show'])                               //не робити маршрут для метода show
+    ->names('blog.admin.posts');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
